@@ -1,0 +1,86 @@
+Gen AI: Technology which basically predict and generate the output as text, image, audio, video by using the 
+large datasets
+ML: Based on human/user input it predicts and recommend and in case of ML user have to explicitely define the function
+ex: Movie recommendation system on Netflix
+DL: The input from the user goes through several hidden layer(Neural network) to understand and generate the output, here Neural network learn by itself
+ex: Face recognition
+LLM(Large Language Model): Generate the text
+LIM(Large Image model)
+LVM(Large Vision model)
+LAM(large audio model)
+
+Langchain: Its a open source (Python/Typescript) framework designed for develpers to build and work with LLM's
+Components of LLM:
+Agent: is a model calling tools in a loop until the given task is complete
+Agent = model+harness
+A harness is everything around the loop, could be prompts, tools and any middleware that shapes model output
+Model: Is nothing but the LLM's which is created by the open AI, google etc..
+Tools: used to integrate with external application
+ex:
+Scenario: You ask, "What is Apple's current stock price?"
+The model might provide outdated information because its training data may not include the current stock price.
+Limitation: It cannot automatically access live market data.
+LLM + Agent + Stock API tool
+The agent can arrange for the model to request live stock data, retrieve the result through the API, and use it to answer your question.
+Memory: context preservation
+Retrivers: Information access like RAG
+Document processing: Data ingestion like PDF processing/web scrapping
+Vector stores: Semantic serach like Similarity serach
+
+from dotenv import load_dotenv
+import os
+from langchain_openapi import ChatOpenAPI
+
+os = load_dotenv()
+os.getenv("")#To get the openai api key
+llm = ChatOpenAPI(model = "gpt-4.0")
+res = llm.invoke("How are you doing today?")
+print(res.content)
+##################################################
+Static Prompts:
+We have 3: System prompts: where the Model act as or behave as role(like Front end developer/HR etc..)
+AI prompts: which is the prompt which is the generated the AI during the convo( or AI itself generated the prompt)
+User Prompt: User asking question or giving their query as input.
+So instead of using invoke and directly add the user prompt, we can create the list of tuple and add all the system and user prompts
+
+messages = [
+    ("system", "You are a helpful Python tutor."),
+    ("human", "What is a list in Python?"),
+    ("ai", "A list is an ordered collection of items."),
+    ("human", "Can you give me an example?")
+]
+
+res = llm.invoke(messages)
+
+print(res.content)
+#######################################################
+1. What is a Runnable?
+In LangChain, a Runnable is an object that follows a common interface for processing inputs and producing outputs.
+For example, these components can be Runnables:
+- ChatPromptTemplate
+- ChatOpenAI
+Runnables commonly support methods such as invoke(), batch(), and stream().
+Each component performs a specific operation, but they share a compatible execution interface.
+2. What is a Chain?
+A chain connects components so that the output of one component becomes the input of the next.
+##############################################
+from dotenv import load_dotenv
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+import os
+
+load_dotenv()
+parser = StrOutputParser()
+
+llm = ChatGoogleGenerativeAI(model = "gemini-3.8-flash")
+while True:
+    query = input("User: ")
+    if query.lower() in ["quit","exit","bye"]:
+        print("GoodBye")
+        break
+  
+    res = llm.invoke(query)
+    print(parser.invoke(res))
+#prompts = ChatPromptTemplate.from_messages()
+######################################################

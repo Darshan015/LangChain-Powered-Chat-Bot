@@ -1,3 +1,25 @@
+<<<<<<< HEAD
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+.envrc
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+=======
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -155,10 +177,28 @@ activemq-data/
 .venv
 env/
 venv/
+>>>>>>> origin/main
 ENV/
 env.bak/
 venv.bak/
 
+<<<<<<< HEAD
+# Build and package artifacts
+build/
+dist/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+=======
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -218,3 +258,4 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+>>>>>>> origin/main

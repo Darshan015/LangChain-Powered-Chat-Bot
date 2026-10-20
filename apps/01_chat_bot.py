@@ -26,8 +26,8 @@ if query:
     st.chat_message("user").markdown(query)
     st.spinner("Wait a sec bro📌")
     res = llm.invoke(query)
-    st.chat_message("assistant").markdown(parser.invoke(res))
-    st.session_state.messages.append({"role":"assistant", "content":res.content})
+    st.chat_message("ai").markdown(parser.invoke(res))
+    st.session_state.messages.append({"role":"ai", "content":res.content})
 
 
 

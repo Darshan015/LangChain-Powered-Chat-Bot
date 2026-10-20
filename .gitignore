@@ -4,6 +4,7 @@
 .env.*
 !.env.example
 .envrc
+apps/my_todos.db
 
 # Python bytecode and caches
 __pycache__/

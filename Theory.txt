@@ -84,3 +84,10 @@ while True:
     print(parser.invoke(res))
 #prompts = ChatPromptTemplate.from_messages()
 ######################################################
+Agent:
+So basically LLM would not do or fetch the real time information such as api calling, db_access, web serach
+It revolves around Think + Action + Obeserve
+When the user inputs the query, LLM thinks and if its not able to find out in datasets, it goes for tool calling(function calling)
+these tools does specific operation and send op to LLM, LLM again checks the op and checks is this exactly
+the user is looking for , if not again the looping happens until it gets the exact response then LLM sends the response to user
+The combination of Prompt+LLM+Tool is called the agent.

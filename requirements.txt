@@ -8,3 +8,7 @@ langchain-ollama
 langchain-groq
 langchain-community
 langgraph
+pypdf
+langchain-text-splitters
+langchain-chroma
+pydantic
